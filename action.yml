@@ -1,0 +1,23 @@
+name: Get Cache and Build Dotnet Project
+description: 'Get Cache and Build Dotnet Project'
+inputs:
+  build-path:
+    description: 'Path to the project to build'
+    required: false
+    default: '.'
+  dotnet-version:
+    description: 'Dotnet version to use'
+    required: false
+    default: '6.x'
+runs:
+  using: 'composite'
+  steps:
+  - uses: actions/checkout@v3
+  - uses: actions/setup-dotnet@v3
+    with:
+      dotnet-version: 6.x
+      cache: true
+  - run: dotnet restore --locked-mode
+    shell: pwsh
+  - run: dotnet build --configuration Release --no-restore
+    shell: pwsh

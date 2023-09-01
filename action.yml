@@ -15,7 +15,7 @@ runs:
   - uses: actions/checkout@v3
   - uses: actions/setup-dotnet@v3
     with:
-      dotnet-version: 6.x
+      dotnet-version: ${{ inputs.dotnet-version }}
       cache: true
   - run: dotnet restore --locked-mode
     shell: pwsh

@@ -20,7 +20,7 @@ runs:
   - uses: actions/setup-dotnet@v3
     with:
       dotnet-version: ${{ inputs.dotnet-version }}
-      cache: ${{ inputs.with-cache }} == 'true'
+      cache: ${{ inputs.with-cache }}
   - run: dotnet restore --locked-mode
     shell: pwsh
   - run: dotnet build --configuration Release --no-restore
